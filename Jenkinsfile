@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("Build"){
             steps{
-                echo "Build... using webpack"
+                echo "Building using webpack"
                 echo "Code has been compiled and packaged"
             }
         }
