@@ -13,8 +13,7 @@ pipeline{
             }
              post{
                 success{
-                    mail  to:"markpremier@gmail.com",
-                    emailext attachLog: true,
+                    emailext attachLog: true, to:"markpremier@gmail.com",
                     subject:"Build Status Email",
                     body:"Build was successful!"
                 }
