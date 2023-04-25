@@ -12,7 +12,7 @@ pipeline{
                 echo "Unit testing done by Selenium"
                 echo "Testing if code is functioning as expected"
                 echo "Integration testing done by Citrus"
-                echo "Testing if components of application are working as expected test change"
+                echo "Testing if components of application are working as expected"
             }
              post{
                 success{
