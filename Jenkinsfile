@@ -3,29 +3,69 @@ pipeline{
     stages{
         stage("Build"){
             steps{
-                echo "Building..."
+                echo "Build using webpack!"
+                echo "Code has been compiled and packaged!"
             }
-            post{
+        }
+        stage("Unit Test"){
+            steps{
+                echo "Test using"
+            }
+             post{
                 success{
                     mail to:"markpremier@gmail.com",
                     subject:"Build Status Email",
                     body:"Build was successful!"
                 }
+                failure{
+                    mail to:"markpremier@gmail.com",
+                    subject:"Build Status Email",
+                    body:"Build has failed"
+                }
             }
         }
-        stage("Test"){
+        stage("Analysis"){
             steps{
-                echo "Testing..."
+                echo "Analysis using"
+            }
+        }
+        stage("Scan"){
+            steps{
+                echo "Security scan using"
+            }
+            post{
+                success{
+                    mail to:"markpremier@gmail.com",
+                    subject:"Build Status Email",
+                    body:"Build was successful!${BUILD_LOG, maxLines=9999, escapeHtml=false}"
+                }
+                failure{
+                    mail to:"markpremier@gmail.com",
+                    subject:"Build Status Email",
+                    body:"Build has failed ${BUILD_LOG, maxLines=9999, escapeHtml=false}"
+                }
+            }
+        }
+        stage("Staging Test"){
+            steps{
+                echo "Test using"
+            }
+            post{
+                success{
+                    mail to:"markpremier@gmail.com",
+                    subject:"Build Status Email",
+                    body:"Build was successful! ${BUILD_LOG, maxLines=9999, escapeHtml=false}"
+                }
+                failure{
+                    mail to:"markpremier@gmail.com",
+                    subject:"Build Status Email",
+                    body:"Build has failed ${BUILD_LOG, maxLines=9999, escapeHtml=false}"
+                }
             }
         }
         stage("Deploy"){
             steps{
                 echo "Deploying..."
-            }
-        }
-        stage("Complete"){
-            steps{
-                echo "Completed..."
             }
         }
     }
