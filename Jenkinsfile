@@ -17,11 +17,6 @@ pipeline{
                     subject:"Build Status Email",
                     body:"Build was successful!"
                 }
-                failure{
-                    mail to:"markpremier@gmail.com",
-                    subject:"Build Status Email",
-                    body:"Build has failed"
-                }
             }
         }
         stage("Analysis"){
@@ -33,34 +28,10 @@ pipeline{
             steps{
                 echo "Security scan using"
             }
-            post{
-                success{
-                    mail to:"markpremier@gmail.com",
-                    subject:"Build Status Email",
-                    body:"Build was successful!"
-                }
-                failure{
-                    mail to:"markpremier@gmail.com",
-                    subject:"Build Status Email",
-                    body:"Build has failed"
-                }
-            }
         }
         stage("Staging Test"){
             steps{
                 echo "Test using"
-            }
-            post{
-                success{
-                    mail to:"markpremier@gmail.com",
-                    subject:"Build Status Email",
-                    body:"Build was successful!"
-                }
-                failure{
-                    mail to:"markpremier@gmail.com",
-                    subject:"Build Status Email",
-                    body:"Build has failed"
-                }
             }
         }
         stage("Deploy"){
