@@ -3,40 +3,80 @@ pipeline{
     stages{
         stage("Build"){
             steps{
-                echo "Build using webpack!"
-                echo "Code has been compiled and packaged!"
+                echo "Build... using webpack"
+                echo "Code has been compiled and packaged"
             }
         }
-        stage("Unit Test"){
+        stage("Unit and Integration Tests"){
             steps{
-                echo "Test using"
+                echo "Unit testing done by Selenium"
+                echo "Testing if code is functioning as expected"
+                echo "Integration testing done by Citrus"
+                echo "Testing if components of application are working as expected"
             }
              post{
                 success{
                     emailext attachLog: true, to:"markpremier@gmail.com",
-                    subject:"Build Status Email",
-                    body:"Build was successful!"
+                    subject:"Test Status Email",
+                    body:"Test was successful!"
+                }
+                failure{
+                    emailext attachLog: true, to:"markpremier@gmail.com",
+                    subject:"Test Status Email",
+                    body:"Testing has failed!"
                 }
             }
         }
-        stage("Analysis"){
+        stage("Code Analysis"){
             steps{
-                echo "Analysis using"
+                echo "Code analysis completed using SonarQube"
+                echo "Code meets industry standards"
             }
         }
-        stage("Scan"){
+        stage("Security Scan"){
             steps{
-                echo "Security scan using"
+                echo "Security scan using Snyk"
+                echo "Testing for any vulnerabilities"
+            }
+             post{
+                success{
+                    emailext attachLog: true, to:"markpremier@gmail.com",
+                    subject:"Security Scan Status Email",
+                    body:"Security Scan was successful, no vulnerabilities found"
+                }
+                failure{
+                    emailext attachLog: true, to:"markpremier@gmail.com",
+                    subject:"Security Scan Status Email",
+                    body:"Build has failed, there are vulnerabilities"
+                }
             }
         }
-        stage("Staging Test"){
+        stage("Deploy to Staging -"){
             steps{
-                echo "Test using"
+                echo "Application deployed to Staging server on AWS EC2"
             }
         }
-        stage("Deploy"){
+        stage("Integration Tests on Staging"){
             steps{
-                echo "Deploying..."
+                echo "Integration testing done by Citrus"
+                echo "Testing if components of application are working as expected"
+            }
+             post{
+                success{
+                    emailext attachLog: true, to:"markpremier@gmail.com",
+                    subject:"Test Status Email",
+                    body:"Test was successful!"
+                }
+                failure{
+                    emailext attachLog: true, to:"markpremier@gmail.com",
+                    subject:"Test Status Email",
+                    body:"Testing has failed!"
+                }
+            }
+        }
+        stage("Deploy to Production"){
+            steps{
+                echo "Application deployed to production server on AWS EC2"
             }
         }
     }
