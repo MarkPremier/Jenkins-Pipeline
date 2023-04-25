@@ -37,12 +37,12 @@ pipeline{
                 success{
                     mail to:"markpremier@gmail.com",
                     subject:"Build Status Email",
-                    body:"Build was successful!${BUILD_LOG, maxLines=9999, escapeHtml=false}"
+                    body:"Build was successful!"
                 }
                 failure{
                     mail to:"markpremier@gmail.com",
                     subject:"Build Status Email",
-                    body:"Build has failed ${BUILD_LOG, maxLines=9999, escapeHtml=false}"
+                    body:"Build has failed"
                 }
             }
         }
@@ -54,12 +54,12 @@ pipeline{
                 success{
                     mail to:"markpremier@gmail.com",
                     subject:"Build Status Email",
-                    body:"Build was successful! ${BUILD_LOG, maxLines=9999, escapeHtml=false}"
+                    body:"Build was successful!"
                 }
                 failure{
                     mail to:"markpremier@gmail.com",
                     subject:"Build Status Email",
-                    body:"Build has failed ${BUILD_LOG, maxLines=9999, escapeHtml=false}"
+                    body:"Build has failed"
                 }
             }
         }
