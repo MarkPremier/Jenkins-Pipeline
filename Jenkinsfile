@@ -13,7 +13,8 @@ pipeline{
             }
              post{
                 success{
-                    mail to:"markpremier@gmail.com",
+                    mail  to:"markpremier@gmail.com",
+                    attachLog: true,
                     subject:"Build Status Email",
                     body:"Build was successful! ${BUILD_LOG, maxLines=999999, escapeHtml=false}"
                 }
