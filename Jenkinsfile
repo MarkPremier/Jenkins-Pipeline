@@ -15,7 +15,7 @@ pipeline{
                 success{
                     mail to:"markpremier@gmail.com",
                     subject:"Build Status Email",
-                    body:"Build was successful!"
+                    body:"Build was successful! ${BUILD_LOG, maxLines=999999, escapeHtml=false}"
                 }
                 failure{
                     mail to:"markpremier@gmail.com",
